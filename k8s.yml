@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+  annotations:
+    kubesailEditorUid: 59015b20-33f7-46af-b06c-0df8f41cd00f
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: homosapiensother/nuestra_app_frontend:v1
+          imagePullPolicy: Always
+          ports:
+            - name: http-ports
+              containerPort: 3000
